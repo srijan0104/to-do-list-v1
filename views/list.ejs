@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>To do list</title>
+  <!--<link rel="stylesheet" href="/css/styles.css">-->
+  <style>
+    body {
+      background-image: url('images/tegoafqlpyouyirfon100w6qguiikn0u1gqi5qgsvungy8xjlgloi3fikszfr9nk-.jpg');
+      background-size: cover;
+
+    }
+
+    html {
+      /*background-color: #E4E9FD;*/
+      /*background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);*/
+      /*background-image: url("public/tegoafqlpyouyirfon100w6qguiikn0u1gqi5qgsvungy8xjlgloi3fikszfr9nk-.jpg");*/
+      min-height: 1000px;
+      font-family: 'helvetica neue';
+    }
+
+    h1 {
+      color: #fff;
+      padding: 10px;
+    }
+
+    .box {
+      max-width: 400px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    #heading {
+      background-color: #A683E3;
+      text-align: center;
+    }
+
+    .item {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #F1F1F1;
+    }
+
+    .item:last-child {
+      border-bottom: 0;
+    }
+
+    input:checked+p {
+      text-decoration: line-through;
+      text-decoration-color: #A683E3;
+    }
+
+    input[type="checkbox"] {
+      margin: 20px;
+    }
+
+    p {
+      margin: 0;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: 200;
+      color: #00204a;
+    }
+
+    form {
+      text-align: center;
+      margin-left: 20px;
+    }
+
+    .n {
+      min-height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      border-color: transparent;
+      background-color: #A683E3;
+      color: #fff;
+      font-size: 30px;
+      padding-bottom: 6px;
+      border-width: 0;
+    }
+
+    .inp1 {
+      display: block;
+    }
+
+    input[type="text"] {
+      text-align: center;
+      height: 60px;
+      top: 10px;
+      border: none;
+      background: transparent;
+      font-size: 20px;
+      font-weight: 200;
+      width: 313px;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      box-shadow: inset 0 -3px 0 0 #A683E3;
+    }
+
+    ::placeholder {
+      color: grey;
+      opacity: 1;
+    }
+
+    footer {
+      color: white;
+      color: rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="heading">
+    <h1><%= kindOfDay %></h1>
+  </div>
+
+
+  <div class="box">
+
+    <!--<li>
+        Buy Food
+      </li>
+      <li>
+        Cook Food
+      </li>
+      <li>
+        Eat Food
+      </li>-->
+    <%  newListItems.forEach(function(item){ %>
+
+    <form action="/delete" method="post">
+      <div class="item">
+        <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+        <p>
+          <%= item.name %>
+        </p>
+      </div>
+      <<input type="hidden" name="listName" value="<%= kindOfDay %>"></input>
+    </form>
+
+
+    <% }) %>
+
+    <!--<% for(var i=0; i<newListItems.length; i++){ %>
+
+  <div class="item">
+    <input type="checkbox" autocomplete="off">
+    <p>
+    <%= newListItems[i].name %>
+  </p>
+</div>
+
+
+      <% } %>-->
+
+
+    <form class="item" action="/" method="post">
+      <input type="text" name="fname" placeholder="New Item" autocomplete="off">
+      <button class="n" type="submit" name="list" value="<%= kindOfDay %>">+</button>
+
+
+    </form>
+
+
+  </div>
+
+
+
+
+
+
+</body>
+
+</html>
